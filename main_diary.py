@@ -9,8 +9,8 @@ import cls.text as tx
 #저장을 누르면 화면을 비우고 배열에 담는 로직
 def msg_save():
     
-    t = title_txt.get("1.0", "end-1c")
-    c = content_txt.get("1.0", "end-1c")
+    t = title_txt.blank.get("1.0", "end-1c")
+    c = content_txt.blank.get("1.0", "end-1c")
     
     save_txt = {"제목":t, "내용":c}
     #저장을 누르면 저장 완료 창을 띄우기
