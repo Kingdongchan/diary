@@ -7,7 +7,7 @@ import cls.text as tx
 #save_txt을 담을 공간 생성
 save_blank = []
 
-def diary_main(main_frame, side_up):
+def diary_main(main_frame):
     # +버튼을 누르면 +버튼이 사라지게끔 하는 로직
     for widget in main_frame.winfo_children():
         widget.destroy()
@@ -26,7 +26,7 @@ def diary_main(main_frame, side_up):
         for widget in main_frame.winfo_children():
             widget.destroy()
             
-        plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda:diary_main(main_frame, side_up))
+        plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda:diary_main(main_frame))
         plus_button.place(relx=0.5, rely=0.5, anchor="center")
             
     # '제목'이라는 단어를 입력시키기
@@ -46,7 +46,7 @@ def diary_main(main_frame, side_up):
     save.bnt_maker()
     
     
-    
+def side_title(side_up):
     #사이드바에 자신이 쓴 제목을 노출시키는 메인 바가 있어야 함
     side_frame_title = tk.Frame(side_up, height=2, bg="gray", bd=1, relief="groove")
     side_frame_title.grid(sticky="n")
