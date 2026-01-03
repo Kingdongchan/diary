@@ -16,7 +16,10 @@ title_txt.txt_maker()
 content = lb.label(root, "내용", 1, 0, "ne")
 content.lb_meker()
 # 내용을 쓸 수 있는 입력칸 생성
-title_txt = tx.text(root, 100, 500, 1, 1, "ne")
+title_txt = tx.text(root, 100, 50, 1, 1, "ne")
 title_txt.txt_maker()
+# 저장 버튼 생성
+save = bt.button(root, "저장", 2, 2, "n")
+save.bnt_maker()
 
 root.mainloop()   
