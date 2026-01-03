@@ -11,7 +11,8 @@ def side_del (save_blank, side_up, main_frame):
     
     if index is None:
         messagebox.showwarning("경고", "삭제할 일기를 먼저 선택하세요.")
-    
+        
+        return
     #삭제 할 떄 정말 삭제할 지 이야기 해주는 안내창
     del_answer = messagebox.askyesno("삭제", "정말로 삭제하겠습니까?")
     
