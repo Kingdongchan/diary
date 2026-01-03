@@ -4,6 +4,7 @@ from tkinter import messagebox
 import cls.button as bt
 import cls.label as lb
 import cls.text as tx 
+import reset as rs
 #save_txt을 담을 공간 생성
 save_blank = []
 current_index = None
@@ -62,11 +63,11 @@ def side_title(side_up, main_frame):
     #텍스트담은 곳에 제목을 띄우기
     for i in range(len(save_blank)):
         data = save_blank[i]
-        side_frame_text = tk.Button(side_up, text=data["제목"], bg="white", relief="raised", command=lambda idx=i:see_save_diary(main_frame, data, idx))
+        side_frame_text = tk.Button(side_up, text=data["제목"], bg="white", relief="raised", command=lambda idx=i:see_save_diary(main_frame, data, idx, side_up))
         side_frame_text.grid(row=i, column=0, sticky="ew")
         
 #버튼을 눌렀을 떄 전에 썻던 내용들이 나와야함
-def see_save_diary(main_frame, data, index):
+def see_save_diary(main_frame, data, index, side_up):
     #전역변수로 설정
     global current_index
     
@@ -91,3 +92,19 @@ def see_save_diary(main_frame, data, index):
     see_content_txt.txt_maker()
     see_content_txt.blank.insert("1.0", data["내용"])
     
+    #수정 로직 만들기
+    def re_write():
+        new_title = see_title_txt.blank.get("1.0", "end -1c")
+        new_content = see_content_txt.blank.get("1.0", "end -1c")
+        
+        save_blank[current_index] = {"제목": new_title, "내용": new_content}
+
+        #사이드바 새로고침
+        side_title(side_up, main_frame)
+        rs.re_set(main_frame, side_up)
+        #수정 완료 메세지 창 띄우기
+        messagebox.showinfo("저장", "저장완료되었습니다.")
+        
+        
+    edit_save_btn = bt.button(main_frame, "저장", 2, 1, "ne", re_write)
+    edit_save_btn.bnt_maker()
