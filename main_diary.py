@@ -62,7 +62,7 @@ def side_title(side_up, main_frame):
     #텍스트담은 곳에 제목을 띄우기
     for i in range(len(save_blank)):
         data = save_blank[i]
-        side_frame_text = tk.Button(side_up, text=data["제목"], bg="white", relief="raised", command=lambda:see_save_diary(main_frame, data, i))
+        side_frame_text = tk.Button(side_up, text=data["제목"], bg="white", relief="raised", command=lambda idx=i:see_save_diary(main_frame, data, idx))
         side_frame_text.grid(row=i, column=0, sticky="ew")
         
 #버튼을 눌렀을 떄 전에 썻던 내용들이 나와야함

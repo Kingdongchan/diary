@@ -31,7 +31,7 @@ plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda
 plus_button.place(relx=0.5, rely=0.5, anchor="center")
 
 #삭제버튼 만들기
-del_button = tk.Button(side_down, text="삭제", bg="lightgray", command=lambda:dl.side_del)
+del_button = tk.Button(side_down, text="삭제", bg="lightgray", command=lambda:dl.side_del(md.save_blank, side_up, main_frame))
 del_button.grid(row=0, column=1)
 
 #리셋버튼
