@@ -53,20 +53,15 @@ def side_title(side_up, main_frame):
 
     for widget in side_up.winfo_children():
         widget.destroy()
-    # 사로 확장 허용하는 명령어
 
-    #사이드바에 자신이 쓴 제목을 노출시키는 메인 바가 있어야 함
-    side_button_title = tk.Button(side_up, height=2, bg="gray", command=lambda:see_save_diary(main_frame))
-    side_button_title.grid(sticky="ew")
-    
     #텍스트담은 곳에 제목을 띄우기
     for i in range(len(save_blank)):
-        save_blank_type = save_blank[i]["제목"]
-        side_frame_text = tk.Label(side_button_title, text=save_blank_type, bg="white")
+        data = save_blank[i]
+        side_frame_text = tk.Button(side_up, text=data["제목"], bg="white", relief="raised", command=lambda:see_save_diary(main_frame))
         side_frame_text.grid(row=i, column=0, sticky="ew")
         
 #버튼을 눌렀을 떄 전에 썻던 내용들이 나와야함
-def see_save_diary(main_frame):
+def see_save_diary(main_frame, data):
     
     for widget in main_frame.winfo_children():
         widget.destroy()
@@ -77,12 +72,12 @@ def see_save_diary(main_frame):
     
     see_title_txt = tx.text(main_frame, 100, 1, 0, 1, "ne")
     see_title_txt.txt_maker()
-    see_title_txt.blank.insert("1.0", save_blank["제목"])
+    see_title_txt.blank.insert("1.0", data["제목"])
     
     # '내용'이라는 단어를 입력시키기
     content = lb.label(main_frame, "내용", 1, 0, "ne")
     content.lb_meker()
     
-    see_content_txt = tx.text(main_frame, 100, 1, 0, 1, "ne")
+    see_content_txt = tx.text(main_frame, 100, 30, 0, 1, "ne")
     see_content_txt.txt_maker()
-    see_content_txt.blank.insert("1.0", save_blank["내용"])
+    see_content_txt.blank.insert("1.0", data["내용"])
