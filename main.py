@@ -3,7 +3,7 @@ import main_diary as md
 
 root = tk.Tk()
 root.title("Diary")
-root.geometry("800x600")
+root.geometry("1000x720")
 
 #사이드바 형성
 side_frame = tk.Frame(root, width=200, bg="lightgray")
@@ -21,7 +21,7 @@ side_down.pack(side="top")
 main_frame = tk.Frame(root, width=600, bg="white")
 main_frame.pack(side="left", fill="both")
 
-plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda:md.diary_main)
+plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda:md.diary_main(main_frame))
 plus_button.place(relx=0.5, rely=0.5, anchor="center")
 
 root.mainloop()
