@@ -10,6 +10,6 @@ class label:
         self.sticky = sticky
         
     def lb_meker(self):
-        label = tk.Laberl(self.main, text=self.text)
+        label = tk.Label(self.main, text=self.text)
         label.grid(row=self.row, column=self.column, sticky=self.sticky)
     
