@@ -53,7 +53,10 @@ def side_title(side_up, main_frame):
 
     for widget in side_up.winfo_children():
         widget.destroy()
-
+        
+    #중앙에 있도록 하는 가중치 명령어 
+    side_up.columnconfigure(0, weight=1)
+    
     #텍스트담은 곳에 제목을 띄우기
     for i in range(len(save_blank)):
         data = save_blank[i]

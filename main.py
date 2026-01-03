@@ -6,7 +6,7 @@ root.title("Diary")
 root.geometry("1000x720")
 
 #사이드바 형성
-side_frame = tk.Frame(root, width=100, bg="lightgray")
+side_frame = tk.Frame(root, width=200, bg="lightgray")
 side_frame.pack(side="left", fill="y")
 #줄어드는 것을 방지하는 명령어
 side_frame.pack_propagate(False)
