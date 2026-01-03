@@ -1,6 +1,7 @@
 import tkinter as tk
 import main_diary as md
 import reset as rs
+import delete as dl
 
 root = tk.Tk()
 root.title("Diary")
@@ -30,12 +31,11 @@ plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda
 plus_button.place(relx=0.5, rely=0.5, anchor="center")
 
 #삭제버튼 만들기
-del_button = tk.Button(side_down, text="삭제", bg="lightgray")
+del_button = tk.Button(side_down, text="삭제", bg="lightgray", command=lambda:dl.side_del)
 del_button.grid(row=0, column=1)
 
 #리셋버튼
-reset_button = tk.Button(side_down, text="리셋", bg="lightgray", comman=lambda:rs.re_set(main_frame, side_up))
+reset_button = tk.Button(side_down, text="리셋", bg="lightgray", command=lambda:rs.re_set(main_frame, side_up))
 reset_button.grid(row=0, column=0)
-
 
 root.mainloop()
