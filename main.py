@@ -19,9 +19,9 @@ side_down.pack(side="top")
 
 #메인바 형성
 main_frame = tk.Frame(root, width=600, bg="white")
-side_frame.pack(side="left", fill="both")
+main_frame.pack(side="left", fill="both")
 
-plus_button = tk.Button(main_frame, text="생성", width=1, height=1, command=lambda:md.diary_main)
-plus_button.pack()
+plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda:md.diary_main)
+plus_button.place(relx=0.5, rely=0.5, anchor="center")
 
 root.mainloop()
