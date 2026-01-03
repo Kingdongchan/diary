@@ -7,7 +7,7 @@ root.geometry("800x600")
 
 #사이드바 형성
 side_frame = tk.Frame(root, width=200, bg="lightgray")
-side_frame.pack(side="left")
+side_frame.pack(side="left", fill="y")
 
 # 사이드 바 2공간으로 나누기
 #위에 칸 큰 제목이 들어올 곳
@@ -19,8 +19,9 @@ side_down.pack(side="top")
 
 #메인바 형성
 main_frame = tk.Frame(root, width=600, bg="white")
-side_frame.pack(side="left")
+side_frame.pack(side="left", fill="both")
 
-
+plus_button = tk.Button(main_frame, text="생성", width=1, height=1, command=lambda:md.diary_main)
+plus_button.pack()
 
 root.mainloop()
