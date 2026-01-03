@@ -7,7 +7,7 @@ import cls.text as tx
 #save_txt을 담을 공간 생성
 save_blank = []
 
-def diary_main(main_frame):
+def diary_main(main_frame, side_up):
     # +버튼을 누르면 +버튼이 사라지게끔 하는 로직
     for widget in main_frame.winfo_children():
         widget.destroy()
@@ -19,14 +19,16 @@ def diary_main(main_frame):
         
         save_txt = {"제목":t, "내용":c}
         #save_blank에 save_txt 담기
-        save_blank.append(save_txt)        
+        save_blank.append(save_txt)
+                
+        side_title(side_up)
         #저장을 누르면 저장 완료 창을 띄우기
         messagebox.showinfo("저장", "저장이 완료되었습니다.")
         # 화면을 비우는 로직 생성)
         for widget in main_frame.winfo_children():
             widget.destroy()
             
-        plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda:diary_main(main_frame))
+        plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda:diary_main(main_frame, side_up))
         plus_button.place(relx=0.5, rely=0.5, anchor="center")
             
     # '제목'이라는 단어를 입력시키기
@@ -45,15 +47,21 @@ def diary_main(main_frame):
     save = bt.button(main_frame, "저장", 2, 2, "n", msg_save)
     save.bnt_maker()
     
-    
+
+#사이드바에 표시하는 로직 형성    
 def side_title(side_up):
+
+    for widget in side_up.winfo_children():
+        widget.destroy()
     #사이드바에 자신이 쓴 제목을 노출시키는 메인 바가 있어야 함
     side_frame_title = tk.Frame(side_up, height=2, bg="gray", bd=1, relief="groove")
     side_frame_title.grid(sticky="n")
+    
+
     #텍스트담은 곳에 제목을 띄우기
     for i in range(len(save_blank)):
         save_blank_type = save_blank[i]["제목"]
-        side_frame_text = tk.Label(side_frame_title, text=save_blank_type, bg="gray")
-        side_frame_text.grid(row=i, column=0, sticky="n")
+        side_frame_text = tk.Label(side_frame_title, text=save_blank_type, bg="white")
+        side_frame_text.grid(row=i, column=0, sticky="ew")
         
         
