@@ -21,6 +21,7 @@ side_down.pack(side="top")
 main_frame = tk.Frame(root, width=600, bg="white")
 main_frame.pack(side="left", fill="both", expand=True)
 
+#메인틀에 +버튼을 누르면 일기를 쓸 수 있도록 하는 로직 필요
 plus_button = tk.Button(main_frame, text="+", width=10, height=5, command=lambda:md.diary_main(main_frame))
 plus_button.place(relx=0.5, rely=0.5, anchor="center")
 
