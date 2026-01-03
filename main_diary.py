@@ -78,6 +78,7 @@ def see_save_diary(main_frame, data):
     content = lb.label(main_frame, "내용", 1, 0, "ne")
     content.lb_meker()
     
-    see_content_txt = tx.text(main_frame, 100, 30, 0, 1, "ne")
+    see_content_txt = tx.text(main_frame, 100, 30, 1, 1, "ne")
     see_content_txt.txt_maker()
     see_content_txt.blank.insert("1.0", data["내용"])
+    
