@@ -6,11 +6,13 @@ import cls.label as lb
 import cls.text as tx 
 #save_txt을 담을 공간 생성
 save_blank = []
+current_index = None
 
 def diary_main(main_frame, side_up):
     # +버튼을 누르면 +버튼이 사라지게끔 하는 로직
     for widget in main_frame.winfo_children():
         widget.destroy()
+        
     #저장을 누르면 화면을 비우고 배열에 담는 로직
     def msg_save():
         
@@ -60,11 +62,15 @@ def side_title(side_up, main_frame):
     #텍스트담은 곳에 제목을 띄우기
     for i in range(len(save_blank)):
         data = save_blank[i]
-        side_frame_text = tk.Button(side_up, text=data["제목"], bg="white", relief="raised", command=lambda:see_save_diary(main_frame, data))
+        side_frame_text = tk.Button(side_up, text=data["제목"], bg="white", relief="raised", command=lambda:see_save_diary(main_frame, data, i))
         side_frame_text.grid(row=i, column=0, sticky="ew")
         
 #버튼을 눌렀을 떄 전에 썻던 내용들이 나와야함
-def see_save_diary(main_frame, data):
+def see_save_diary(main_frame, data, index):
+    #전역변수로 설정
+    global current_index
+    
+    current_index = index
     
     for widget in main_frame.winfo_children():
         widget.destroy()
@@ -81,7 +87,7 @@ def see_save_diary(main_frame, data):
     content = lb.label(main_frame, "내용", 1, 0, "ne")
     content.lb_meker()
     
-    see_content_txt = tx.text(main_frame, 100, 30, 1, 1, "ne")
+    see_content_txt = tx.text(main_frame, 100, 50, 1, 1, "ne")
     see_content_txt.txt_maker()
     see_content_txt.blank.insert("1.0", data["내용"])
     
