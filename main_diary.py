@@ -23,8 +23,6 @@ def diary_main(main_frame):
         for widget in main_frame.winfo_children():
             widget.destroy()
             
-
-    root= tk.Tk()
     # '제목'이라는 단어를 입력시키기
     title = lb.label(main_frame, "제목", 0, 0, "ne")
     title.lb_meker()
